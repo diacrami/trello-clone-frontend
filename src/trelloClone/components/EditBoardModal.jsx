@@ -40,7 +40,7 @@ export const EditBoardModal = ({editBoardModal, setEditBoardModal}) => {
             onSubmit={handleEditBoard}
           >
             <div className="flex flex-col gap-2 justify-center items-center p-5">
-              <h6>Edit Board</h6>
+              <h6 className="text-slate-200">Edit Board</h6>
               {/* <img src="https://placehold.co/200x120/png" alt="" /> */}
             </div>
             <div className="w-full flex flex-col gap-2 justify-center items-center pr-5 pl-5">
@@ -65,7 +65,7 @@ export const EditBoardModal = ({editBoardModal, setEditBoardModal}) => {
                 }
               </div>
               <div className="w-full flex flex-col gap-1 justify-center items-start">
-                <label className="text-sm" htmlFor="">Color</label>
+                <label className="text-sm text-slate-200" htmlFor="">Color</label>
                 <input
                   className="w-full p-1"
                   type="color"
@@ -76,7 +76,7 @@ export const EditBoardModal = ({editBoardModal, setEditBoardModal}) => {
               </div>
               <div className="w-full flex flex-col justify-center items-center p-2">
                 <button
-                  className="w-1/2 border border-gray-400 rounded-md hover:bg-gray-600"
+                  className="w-1/2 text-slate-200 border border-gray-400 bg-gray-900 rounded-md hover:bg-gray-600"
                 >
                   Edit
                 </button>

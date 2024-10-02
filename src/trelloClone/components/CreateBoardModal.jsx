@@ -55,7 +55,7 @@ export const CreateBoardModal = ({ addBoardModal, setAddBoardModal }) => {
           </div>
           <div className="w-full flex flex-col gap-2 justify-center items-center pr-5 pl-5">
             <div className="flex flex-col gap-1 justify-center items-start text-slate-900">
-              <label className="text-sm" htmlFor="">Title</label>
+              <label className="text-sm text-slate-200" htmlFor="">Title</label>
               <input
                 className="p-1"
                 type="text"
@@ -75,7 +75,7 @@ export const CreateBoardModal = ({ addBoardModal, setAddBoardModal }) => {
               }
             </div>
             <div className="w-full flex flex-col gap-1 justify-center items-start">
-              <label className="text-sm" htmlFor="">Color</label>
+              <label className="text-sm text-slate-200" htmlFor="">Color</label>
               <input
                 className="w-full p-1"
                 type="color"

@@ -4,7 +4,7 @@ import { useEffect, useReducer, useState } from "react";
 import { TrelloCloneContext } from "./TrelloCloneContext"
 import { types } from "../types/types";
 import { trelloCloneReducer } from "./trelloCloneReducer";
-
+import Swal from 'sweetalert2';
 
 
 
@@ -26,12 +26,21 @@ export const TrelloCloneProvider = ({ children }) => {
 
 
   useEffect(() => {
+
     fetch(`${url}trello/`).then((res) =>
       res.json()
     ).then((boardData) => {
+
       initState(boardData);
-      
-    });
+
+    }).catch(error => {
+      Swal.fire({
+        title: "Lo siento, ha ocurrido un error",
+        text: error,
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    })
 
   }, [])
 

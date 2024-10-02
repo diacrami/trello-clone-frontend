@@ -26,13 +26,13 @@ export const Boardbar = ({ blockBehind, setBlockBehind,blockBehindBoard, setBloc
     return (
         <>
             <div>
-                <div className="h-[3rem] flex items-center p-2 bg-slate-500 opacity-70 justify-between">
-                    <h2 className="text-slate-200">{activeBoard?.name}</h2>
+                <div className="h-[3rem] flex items-center p-2 bg-slate-800 opacity-70 justify-between">
+                    <h2 className="text-slate-100">{activeBoard?.name}</h2>
                     <div className="flex flex-row">
-                        <button onClick={() => setEditBoardModal(!editBoardModal)} className="text-slate-200 h-full flex flex-row gap-2 justify-center items-center mr-5">
+                        <button onClick={() => setEditBoardModal(!editBoardModal)} className="text-slate-100 h-full flex flex-row gap-2 justify-center items-center mr-5">
                             <Edit style={{ fontWeight: "bold" }} size={20}></Edit>
                         </button>
-                        <button onClick={handleDelete} className="text-slate-200 h-full flex flex-row gap-2 justify-center items-center mr-5">
+                        <button onClick={handleDelete} className="text-slate-100 h-full flex flex-row gap-2 justify-center items-center mr-5">
                             <Trash2 style={{ fontWeight: "bold" }} size={20}></Trash2>
                         </button>
                     </div>
