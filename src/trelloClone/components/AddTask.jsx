@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { Plus, X } from "react-feather"
 import { useForm } from "../hooks";
 import { TrelloCloneContext } from "../../context";
@@ -18,6 +18,8 @@ export const AddTask = ({ panel }) => {
     title: '',
   })
 
+  const inputRef = useRef(null);
+
   const activeBoard = boards[active];
 
 
@@ -26,7 +28,7 @@ export const AddTask = ({ panel }) => {
     e.preventDefault();
 
     if (title) {
-      if (title.length < 30) {
+      if (title.length < 30 && title.trim()!=="") {
           setTitleFound(true)
       } else {
           setTitleFound(false)
@@ -60,7 +62,12 @@ export const AddTask = ({ panel }) => {
           <>
             <button
               className="flex justify-center items-center gap-1 p-3 text-sm"
-              onClick={() => setAddTaskModal(!addTaskModal)}
+              onClick={() => {
+                setAddTaskModal(!addTaskModal)
+                setTimeout(() => {
+                  inputRef.current?.focus()
+              }, 100);
+              }}
             >
               <Plus size={15}></Plus>
               <span> Add a Card</span>
@@ -77,6 +84,7 @@ export const AddTask = ({ panel }) => {
 
               <div className="flex flex-col gap-2 p-2">
                 <textarea
+                  ref={inputRef}
                   name="title"
                   value={title}
                   onChange={onInputChange}

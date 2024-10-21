@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { Plus, X } from "react-feather";
 import { useForm } from "../hooks";
 import { TrelloCloneContext } from "../../context";
@@ -15,12 +15,13 @@ export const AddPanel = () => {
     const { formState, onInputChange, onResetForm, title } = useForm({
         title: '',
     });
+    const inputRef = useRef(null);
 
     const onSubmitTask = (e) => {
         e.preventDefault();
 
         if (title) {
-            if (title.length < 20) {
+            if (title.length < 20 && title.trim()!=="") {
                 setTitleFound(true)
             } else {
                 setTitleFound(false)
@@ -52,7 +53,12 @@ export const AddPanel = () => {
                         <>
                             <button
                                 className="flex justify-center items-center gap-1 p-3 text-sm"
-                                onClick={() => setAddPanelModal(!addPanelModal)}
+                                onClick={() => {
+                                    setAddPanelModal(!addPanelModal)
+                                    setTimeout(() => {
+                                        inputRef.current?.focus()
+                                    }, 100);
+                                }}
                             >
                                 <Plus size={15}></Plus>
                                 <span> Add a Card</span>
@@ -70,6 +76,7 @@ export const AddPanel = () => {
 
                                 <div className="flex flex-col gap-2 p-2">
                                     <input
+                                        ref={inputRef}
                                         name="title"
                                         value={title}
                                         onChange={onInputChange}

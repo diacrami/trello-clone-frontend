@@ -16,10 +16,11 @@ export const CreateBoardModal = ({ addBoardModal, setAddBoardModal }) => {
     title: '',
     bgcolor: '#475569',
   });
+  
 
   const handleCreateBoard = (e) => {
     e.preventDefault();
-    if (title) {
+    if (title && title.length < 20 && title.trim()!=="") {
       setTitleFound(true)
     } else {
       setTitleFound(false)
@@ -51,7 +52,7 @@ export const CreateBoardModal = ({ addBoardModal, setAddBoardModal }) => {
         >
           <div className="flex flex-col gap-2 justify-center items-center p-5">
             <h6>Create Board</h6>
-            <img src="https://placehold.co/200x120/png" alt="" />
+            {/* <img src="https://placehold.co/200x120/png" alt="" /> */}
           </div>
           <div className="w-full flex flex-col gap-2 justify-center items-center pr-5 pl-5">
             <div className="flex flex-col gap-1 justify-center items-start text-slate-900">
@@ -69,7 +70,7 @@ export const CreateBoardModal = ({ addBoardModal, setAddBoardModal }) => {
 
                 <Error
 
-                  message={"Debe ingresar un título"}
+                  message={"Debe ingresar un título que debe contener menos de 20 caracteres"}
                 />
 
               }
