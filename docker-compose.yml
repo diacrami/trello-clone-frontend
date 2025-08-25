@@ -1,0 +1,25 @@
+
+
+services:
+  trello-clone-front:
+    container_name: trello-clone
+    build: 
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - '5173:5173'
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # Required for Vite to detect changes inside Docker
+    command: npm run dev
+    develop:
+      watch:
+        - action: rebuild 
+          path: ./src
+          target: /usr/src/app/src
+    
