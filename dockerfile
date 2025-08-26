@@ -1,5 +1,8 @@
-FROM node:18-alpine
+# Dockerfile for development
 
+
+# Dockerfile for development
+FROM node:18-alpine AS build
 
 WORKDIR /app
 
@@ -8,7 +11,11 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 5173
+RUN npm run build
 
-
-CMD ["npm", "run", "dev"]
+#prod
+FROM nginx:stable-alpine AS production
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
