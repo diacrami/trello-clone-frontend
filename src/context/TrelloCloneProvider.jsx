@@ -21,7 +21,7 @@ export const TrelloCloneProvider = ({ children }) => {
 
   const [trelloState, dispatch] = useReducer(trelloCloneReducer, {});
 
-  const url = import.meta..VITE_REACT_APP_BACKEND_URL;
+  const url = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 
 
